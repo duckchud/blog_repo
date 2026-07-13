@@ -1,0 +1,70 @@
+/* ============================================================
+   Node Note — 블로그 글 공용 스타일
+   사용법: Blogger → 테마(Theme) → 맞춤설정(Customize)
+           → 고급(Advanced) → CSS 추가(Add CSS) 칸에 아래 전체를 붙여넣기.
+   그러면 글 본문에서 class 이름만으로 아래 디자인을 쓸 수 있습니다.
+   (배경/글자색을 명시했으므로 밝은 테마·어두운 테마 모두에서 일관되게 보입니다.)
+   ============================================================ */
+
+/* 콜아웃 박스 — <div class="callout callout-info"> ... </div> */
+.callout {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 4px solid #9ca3af;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.6;
+}
+.callout-info   { border-left-color: #3b82f6; background: #eff6ff; }
+.callout-tip    { border-left-color: #10b981; background: #ecfdf5; }
+.callout-warn   { border-left-color: #f59e0b; background: #fffbeb; }
+.callout-danger { border-left-color: #ef4444; background: #fef2f2; }
+
+/* 인라인 형광펜 — <span class="hl">강조</span> */
+.hl {
+  background: #fef08a;
+  color: #1f2937;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* 키보드 키 — <kbd>Ctrl</kbd> */
+kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: #111827;
+  font-size: 0.9em;
+}
+
+/* 도입부 큰 문단 — <p class="lead"> ... </p> */
+.lead { font-size: 1.15em; color: #4b5563; }
+
+/* 버튼형 링크 — <a class="btn" href="..."> ... </a> */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #6366f1;
+  color: #ffffff !important;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* 접기/펼치기 — <details class="foldbox"><summary>제목</summary> ... </details> */
+.foldbox {
+  margin: 16px 0;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+.foldbox > summary { cursor: pointer; font-weight: 600; }
+
+/* 이미지 + 설명 — <figure><img ...><figcaption> ... </figcaption></figure> */
+figure { margin: 16px 0; text-align: center; }
+figure img { max-width: 100%; border-radius: 8px; }
+figure figcaption { color: #6b7280; font-size: 0.9em; margin-top: 6px; }
