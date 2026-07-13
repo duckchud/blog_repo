@@ -78,6 +78,7 @@ export async function getBloggerPost(
   const response = await client.posts.get({
     blogId,
     postId,
+    view: "ADMIN",
   });
   return requirePostId(response.data);
 }

@@ -13,10 +13,14 @@ function isPostType(value: string): value is PostType {
 export function registerNewCommand(program: Command): void {
   program
     .command("new <type> <title>")
-    .description("새 Markdown 게시글을 생성합니다. type은 tech 또는 daily입니다.")
+    .description(
+      "새 Markdown 게시글을 생성합니다. type은 " +
+        POST_TYPES.join(", ") +
+        " 중 하나입니다.",
+    )
     .action(async (type: string, title: string) => {
       if (!isPostType(type)) {
-        throw new Error("type must be tech or daily.");
+        throw new Error("type must be one of " + POST_TYPES.join(", ") + ".");
       }
 
       const config = loadBlogConfig();

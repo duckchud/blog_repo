@@ -1,4 +1,4 @@
-export const POST_TYPES = ["tech", "daily"] as const;
+export const POST_TYPES = ["ai", "paper", "etc"] as const;
 
 export type PostType = (typeof POST_TYPES)[number];
 

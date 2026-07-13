@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
+import { POST_TYPES } from "../types/post.js";
 import type {
   LocalPostStatus,
   MarkdownPost,
@@ -43,12 +44,12 @@ function optionalString(value: unknown): string | undefined {
 }
 
 function parseType(value: unknown, filePath: string): PostType {
-  if (value === "tech" || value === "daily") {
-    return value;
+  if (typeof value === "string" && (POST_TYPES as readonly string[]).includes(value)) {
+    return value as PostType;
   }
 
   throw new MarkdownPostError(
-    "type must be either tech or daily in " + filePath + ".",
+    "type must be one of " + POST_TYPES.join(", ") + " in " + filePath + ".",
   );
 }
 
@@ -121,8 +122,12 @@ export async function updateMarkdownPostMetadata(
 ): Promise<MarkdownPost> {
   const nextFrontMatter: Record<string, unknown> = {
     ...post.rawFrontMatter,
-    ...patch,
   };
+  for (const [key, value] of Object.entries(patch)) {
+    if (value !== undefined) {
+      nextFrontMatter[key] = value;
+    }
+  }
   const source = matter.stringify(post.body, nextFrontMatter);
   await writeAtomically(post.filePath, source);
   return parseMarkdownPost(source, post.filePath);
