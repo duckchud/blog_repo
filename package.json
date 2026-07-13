@@ -1,0 +1,23 @@
+{
+  "name": "blog-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Markdown-first Blogger publishing workspace",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": [
+    "apps/cli",
+    "packages/blog-core"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@blog-workspace/blog-core && npm run build --workspace=@blog-workspace/cli",
+    "typecheck": "npm run typecheck --workspace=@blog-workspace/blog-core && npm run typecheck --workspace=@blog-workspace/cli",
+    "blog": "npm run build && node apps/cli/dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@blog-workspace/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "blog": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "blog": "node --enable-source-maps dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@blog-workspace/blog-core": "file:../../packages/blog-core",
+    "commander": "^13.1.0"
+  }
+}
