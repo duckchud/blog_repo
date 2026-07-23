@@ -1,0 +1,274 @@
+/* ============================================================
+   Node Note — Blogger Contempo theme override
+
+   Paste this entire file into:
+   Blogger → Theme → Customize → Advanced → Add CSS
+
+   It keeps Blogger's Contempo template and widgets intact, while
+   replacing the visual layer with a calm, readable technical-note layout.
+   ============================================================ */
+
+/* Base */
+html {
+  background: #f6f7fb;
+}
+
+body {
+  background: #f6f7fb;
+  color: #1f2937;
+  font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+body .bg-photo,
+body .bg-photo-overlay,
+body .bg-photo-container {
+  display: none;
+}
+
+a,
+a:visited {
+  color: #4f46e5;
+}
+
+a:hover {
+  color: #3730a3;
+}
+
+/* Header */
+.page_body .centered {
+  max-width: 860px;
+  padding-top: 36px;
+}
+
+.blog-name {
+  margin: 8px 0 28px;
+}
+
+.Header h1,
+.Header h1 a,
+.Header h1 a:visited,
+.Header h1 a:hover {
+  color: #111827;
+  font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.Header p {
+  color: #6b7280;
+  font-size: 0.98rem;
+}
+
+.sticky {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 12px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.sticky .Header h1,
+.sticky .Header h1 a,
+.sticky .Header h1 a:visited,
+.sticky .Header h1 a:hover {
+  color: #111827;
+}
+
+/* Posts */
+#page_body .FeaturedPost,
+.Blog .blog-posts .post-outer-container,
+.PopularPosts {
+  background: #ffffff;
+  border: 1px solid #e7e9f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.Blog .blog-posts .post-outer-container {
+  padding: 44px 52px;
+}
+
+.post-title,
+.post-title a,
+.post-title a:visited,
+.post-title a:hover {
+  color: #111827;
+  font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.35;
+}
+
+.post-body {
+  color: #374151;
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: #111827;
+  font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.4;
+}
+
+.post-body h2 {
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.55rem;
+  margin: 3.2rem 0 1.1rem;
+  padding-bottom: 0.55rem;
+}
+
+.post-body h3 {
+  font-size: 1.25rem;
+  margin: 2.4rem 0 0.8rem;
+}
+
+.post-body p,
+.post-body ul,
+.post-body ol {
+  margin: 1.15rem 0;
+}
+
+.post-body li + li {
+  margin-top: 0.38rem;
+}
+
+.post-body blockquote {
+  background: #f5f3ff;
+  border-left: 4px solid #7c3aed;
+  border-radius: 0 10px 10px 0;
+  color: #4c1d95;
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: normal;
+  margin: 1.8rem 0;
+  padding: 1rem 1.25rem;
+  text-align: left;
+}
+
+.post-body code {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  color: #be123c;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.88em;
+  padding: 0.12em 0.35em;
+}
+
+.post-body pre {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding: 1.15rem 1.3rem;
+}
+
+.post-body pre code {
+  background: transparent;
+  border: 0;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 0;
+}
+
+.post-body table {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  display: block;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+  width: max-content;
+}
+
+.post-body th {
+  background: #f8fafc;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.post-body td,
+.post-body th {
+  border: 1px solid #e5e7eb;
+  padding: 0.7rem 0.85rem;
+}
+
+.post-body img {
+  border-radius: 12px;
+}
+
+/* Metadata, labels and sidebar */
+.byline,
+.post-footer {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.Label li,
+.Label span.label-size,
+.byline.post-labels a {
+  background: #eef2ff;
+  border-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.sidebar-container,
+.sidebar-container .sidebar_bottom,
+.sidebar-container .navigation,
+.sidebar-container .sidebar_top_wrapper {
+  background: #ffffff;
+}
+
+.sidebar-container .widget+.widget {
+  border-top-color: #e5e7eb;
+}
+
+.sidebar-container .widget .title,
+.sidebar-container .widget li a {
+  color: #374151;
+}
+
+/* Mobile */
+@media screen and (max-width: 800px) {
+  .page_body .centered {
+    padding-top: 12px;
+  }
+
+  .blog-name {
+    margin-bottom: 16px;
+  }
+
+  .Blog .blog-posts .post-outer-container {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    box-shadow: none;
+    padding: 28px 22px;
+  }
+
+  .post-body {
+    font-size: 1rem;
+  }
+
+  .post-body h2 {
+    font-size: 1.35rem;
+    margin-top: 2.6rem;
+  }
+
+  .post-body pre {
+    border-radius: 9px;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding: 1rem;
+  }
+}
