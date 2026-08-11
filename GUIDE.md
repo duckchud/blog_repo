@@ -198,6 +198,39 @@ npm run blog -- status "<파일>"             # 상태 확인
 → 로컬 `.md`에 `blogger_post_id`가 비어 있는 채로 두 번 발행하면 중복 생성됨.
    Blogger 웹에서 잘못된 글을 지우고, 남길 글의 ID를 `.md`에 넣어 맞추기.
 
+**`invalid_grant` (며칠 안 쓰다가 발행하려 할 때)**
+→ 리프레시 토큰 만료. OAuth 동의 화면이 **"테스트" 모드면 토큰이 7일 후 만료**됨.
+   당장은 `npm run blog -- auth`로 재인증하면 되지만, 매주 반복된다.
+   근본 해결: Google Cloud Console → **OAuth 동의 화면 → 게시 상태를 "프로덕션"으로 전환**.
+   개인 앱은 심사 없이 바로 전환되고, 이후 토큰이 만료되지 않는다.
+
+**`Request had insufficient authentication scopes`**
+→ 인증은 됐지만 **Blogger 권한에 동의하지 않은 것**. Google 동의 화면은 권한별
+   체크박스를 제공해서, 체크를 빠뜨리면 이메일 권한만 받은 토큰이 만들어진다.
+   `credentials/token.json`의 `scope`에 `auth/blogger`가 있는지 확인:
+
+   ```bash
+   python3 -c "import json;print(json.load(open('credentials/token.json'))['scope'])"
+   ```
+
+   없으면 `rm credentials/token.json` 후 재인증하고, 이번엔 **모든 권한 체크박스를 체크**.
+
+**`The OAuth client was deleted` (401 deleted_client)**
+→ `credentials/client_secret.json`이 이미 삭제된 클라이언트의 것. Console에서
+   **OAuth 클라이언트 ID(데스크톱 앱)를 새로 만들어** JSON을 받고 교체할 것.
+
+**`The service is currently unavailable`**
+→ Google 쪽 일시 오류. 같은 명령을 한 번 더 실행하면 대개 성공한다.
+
+**WSL에서 `auth` 실행 시 브라우저가 안 열림 (`spawn xdg-open ENOENT`)**
+→ WSL에는 `xdg-open`이 없어서 자동 열기가 실패한다. 출력된 URL을 복사해 붙여넣을 때
+   **URL이 잘려 `Required parameter is missing: response_type` 오류**가 자주 난다
+   (URL이 500자 정도로 길다). 복사 대신 WSL에서 Windows 브라우저를 직접 여는 게 안전:
+
+   ```bash
+   /mnt/c/Windows/explorer.exe "<auth가 출력한 전체 URL>"
+   ```
+
 ---
 
 ## 11. 글 꾸미기 (디자인 스니펫)
